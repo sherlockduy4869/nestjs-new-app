@@ -18,11 +18,11 @@ phases:
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
-      - echo Pushing the image...
+      - echo Build completed on `date`
+      - echo pushing to repo
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo Creating imagedefinitions.json...
-      - printf '[{"name":"demo-app","imageUri":"$REPOSITORY_URI:latest"}]' > imagedefinitions.json
+      - echo Writing image definitions file...
       # Give your container name
       - DOCKER_CONTAINER_NAME=nestjs-new-app-demo-02
       - printf '[{"name":"%s","imageUri":"%s"}]' $DOCKER_CONTAINER_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
