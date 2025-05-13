@@ -11,4 +11,14 @@ export class AppService {
       throw err;
     }
   }
+
+  healthCheck(): string {
+    try {
+      console.log('healthCheck ok nha');
+      return 'Health check ok roi';
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  }
 }
