@@ -10,6 +10,8 @@ COPY package*.json /app
 # Install all the dependencies
 RUN npm install --force
 
+RUN npm i -g @nestjs/cli
+
 # Copy the rest of the application to the docker image
 COPY . .
 
